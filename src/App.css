@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+
+.sent{
+  justify-content:end;
+  color:black;
+  font-weight: bold;
+}
+.messages-chat{
+  overflow-y: scroll;
+}
