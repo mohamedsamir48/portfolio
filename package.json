@@ -33,7 +33,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "vite build",
+    "build": "react-scripts build",
     "preview": "vite preview"
   },
   "eslintConfig": {

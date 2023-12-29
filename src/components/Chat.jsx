@@ -106,9 +106,9 @@ const Chat = () => {
     const startX = serverElementPosition.filter((el) => el.user == id)[0].x;
     const startY = serverElementPosition.filter((el) => el.user == id)[0].y;
 
-    element.addEventListener('touchmove', moveElement);
+    element?.addEventListener('touchmove', moveElement);
 
-    element.addEventListener('touchend', stopMovingElement);
+    element?.addEventListener('touchend', stopMovingElement);
 
     function moveElement(event) {
       // Calculate the new position of the element.
@@ -142,9 +142,9 @@ const Chat = () => {
 
     const startX = position.x;
     const startY = position.y;
-    element.addEventListener('touchmove', moveElement);
+    element?.addEventListener('touchmove', moveElement);
 
-    element.addEventListener('touchend', stopMovingElement);
+    element?.addEventListener('touchend', stopMovingElement);
 
     function moveElement(event) {
       // Calculate the new position of the element.
@@ -169,7 +169,7 @@ const Chat = () => {
   useEffect(() => {
     onlineUser?.map((u, index) => {
       !serverElementPosition.includes((el) => el.user == u) &&
-      screen.width > 960
+      window.screen.width > 960
         ? setServerElementPosition([
             ...serverElementPosition,
             {
