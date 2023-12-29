@@ -98,40 +98,40 @@ const Chat = () => {
     }
   };
 
-  const serverChatTouchHandle = (e, id) => {
-    let ServerElement;
-    if (id !== undefined) ServerElement = document.querySelector(`#${id}`);
-    else ServerElement = undefined;
+  // const serverChatTouchHandle = (e, id) => {
+  //   let ServerElement;
+  //   if (id !== undefined) ServerElement = document.querySelector(`#${id}`);
+  //   else ServerElement = undefined;
 
-    const startX = serverElementPosition.filter((el) => el.user == id)[0].x;
-    const startY = serverElementPosition.filter((el) => el.user == id)[0].y;
+  //   const startX = serverElementPosition.filter((el) => el.user == id)[0].x;
+  //   const startY = serverElementPosition.filter((el) => el.user == id)[0].y;
 
-    element?.addEventListener('touchmove', moveElement);
+  //   element?.addEventListener('touchmove', moveElement);
 
-    element?.addEventListener('touchend', stopMovingElement);
+  //   element?.addEventListener('touchend', stopMovingElement);
 
-    function moveElement(event) {
-      // Calculate the new position of the element.
-      const newX = startX + event.touches[0].clientX - startX;
-      const newY = startY + event.touches[0].clientY - startY;
-      ServerElement.style.transition = 'none';
+  //   function moveElement(event) {
+  //     // Calculate the new position of the element.
+  //     const newX = startX + event.touches[0].clientX - startX;
+  //     const newY = startY + event.touches[0].clientY - startY;
+  //     ServerElement.style.transition = 'none';
 
-      // Set the new position of the element.
-      setServerElementPosition([
-        ...serverElementPosition.filter((el) => el.user !== id),
-        { user: id, x: newX, y: newY },
-      ]);
-    }
+  //     // Set the new position of the element.
+  //     setServerElementPosition([
+  //       ...serverElementPosition.filter((el) => el.user !== id),
+  //       { user: id, x: newX, y: newY },
+  //     ]);
+  //   }
 
-    // Function to stop moving the element.
-    function stopMovingElement() {
-      // Remove the event listeners.
-      ServerElement.style.transition = 'all';
+  //   // Function to stop moving the element.
+  //   function stopMovingElement() {
+  //     // Remove the event listeners.
+  //     ServerElement.style.transition = 'all';
 
-      element.removeEventListener('touchmove', moveElement);
-      element.removeEventListener('touchend', stopMovingElement);
-    }
-  };
+  //     element?.removeEventListener('touchmove', moveElement);
+  //     element?.removeEventListener('touchend', stopMovingElement);
+  //   }
+  // };
 
   const handleTouch = (e, id = undefined) => {
     e.preventDefault();
