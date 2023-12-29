@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import About from './About';
 import bg from '../assets/4884841.jpg';
 import Aos from 'aos';
+import introbg from '../assets/background.jpg';
 const Container = styled.div`
   display: flex;
   z-index: 1;
@@ -15,7 +16,7 @@ const Container = styled.div`
   color: black;
   /* background: radial-gradient(circle at center, #3e065f 0, black 100%); */
   /* background-image: url(${bg}); */
-  background-image: url('/background.jpg');
+  background-image: url(${introbg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

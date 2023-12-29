@@ -114,7 +114,7 @@ const Projects = forwardRef((props, ref) => {
           {projects.map((project, index) => (
             <ProjectCover
               key={index}
-              src={`/img/projects/${project.folderName}/${project.images[0]}`}
+              src={require(`../assets/projects/${project.folderName}/${project.images[0]}`)}
               onClick={() => ShowProjectHandle(index)}
             />
           ))}
@@ -165,19 +165,17 @@ const Projects = forwardRef((props, ref) => {
             />
           ) : null}
           {projectIndex !== -1
-            ? projects[projectIndex].images.map((img, index) => (
+            ? projects[projectIndex].images.map((img, index) => {
                 <ProjectImage
                   key={img}
                   index={index}
                   imageIndex={imageIndex}
-                  src={
-                    `/img/projects/` +
+                  src={require(`../assets/projects/` +
                     `${projects[projectIndex].folderName}` +
                     '/' +
-                    `${img}`
-                  }
-                />
-              ))
+                    `${img}`)}
+                />;
+              })
             : null}
         </Slider>
       </ProjectShow>

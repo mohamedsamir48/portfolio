@@ -45,6 +45,9 @@ const Title = styled.h1`
   }
 `;
 const Desc = styled.p``;
+const Buttun = styled.button`
+  width: 100%;
+`;
 const About = forwardRef((props, aboutRef) => {
   return (
     <Container ref={aboutRef}>
@@ -59,15 +62,14 @@ const About = forwardRef((props, aboutRef) => {
           problem must be solved, whatever...!!, you should be carful when chat
           me in this website. don't send sensitive data, I prefer sending email
           in,{' '}
-          <buttun
+          <Buttun
             onClick={() => {
               props.contactRef.current.scrollIntoView();
             }}
-            onPress={() => {}}
             className={`w-[100px] text-[#712b75] cursor-pointer h-[25px] shadow-xl shadow-white`}
           >
             Send
-          </buttun>
+          </Buttun>
         </Desc>
       </Wrapper>
     </Container>

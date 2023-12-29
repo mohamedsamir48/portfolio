@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 const Chat = () => {
   const [mohamed, setMohamed] = useState(false);
-  const socket = io.connect(import.meta.env.APP_API_URL);
+  const socket = io.connect(process.env.REACT_APP_API_URL);
   const [openChat, setOpenChat] = useState(false);
   const chatInput = useRef(null);
   const [firstMessage, setFirstMessage] = useState('');
