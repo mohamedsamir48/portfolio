@@ -79,7 +79,7 @@ const Intro = forwardRef(({ aboutRef }, ref) => {
   }, []);
   return (
     <>
-      <Container ref={ref}>
+      <Container id='intro' ref={ref}>
         <Wrapper>
           <Content>
             <Span

@@ -3,6 +3,7 @@ import { BsDot, BsArrowUpCircle, BsArrowDownCircle } from 'react-icons/bs';
 import { FaTimes } from 'react-icons/fa';
 import io from 'socket.io-client';
 import axios from 'axios';
+import Draggable from 'react-draggable';
 const Chat = () => {
   const [mohamed, setMohamed] = useState(false);
   const socket = io.connect(process.env.REACT_APP_API_URL);
@@ -18,7 +19,7 @@ const Chat = () => {
   const [onlineUser, setOnlineUser] = useState([]);
   const [serverElementPosition, setServerElementPosition] = useState([]);
   const [serverOpenChat, setServerOpenChat] = useState([]);
-  const [position, setPosition] = useState({ x: 40, y: 570 });
+  const [position, setPosition] = useState({ x: 100, y: 50 });
   // const getMohamed = async () => {
   //   try {
   //     const res = await axios.get(import.meta.env.APP_API_URL + '/online');
@@ -35,24 +36,30 @@ const Chat = () => {
     event.preventDefault();
     if (document.querySelector('#chat'))
       document.querySelector('#chat').style.transition = 'none 0s';
-
+    let initialClickY =
+      document.getElementById('intro').clientHeight - event.clientY;
+    let initialElementBottom = document
+      .getElementById('chat')
+      .getBoundingClientRect().bottom;
     const startX = event.clientX;
     const startY = event.clientY;
-
     document.addEventListener('mousemove', handleMouseMove);
-    // document.addEventListener('touchmove', handleMouseMove);
+    document.addEventListener('touchmove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
-    // document.addEventListener('touchend', handleMouseUp);
+    document.addEventListener('touchend', handleMouseUp);
 
     function handleMouseMove(event) {
+      const deltaY = event.clientY - initialClickY;
+      const newBottom = initialElementBottom - deltaY;
       const newX = position.x + event.clientX - startX;
       const newY = position.y + event.clientY - startY;
 
-      setPosition({ x: newX, y: newY });
+      setPosition({ x: newX, y: newBottom });
     }
 
     function handleMouseUp() {
       document.querySelector('#chat').style.transition = 'all 1s';
+
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('touchmove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
@@ -135,11 +142,15 @@ const Chat = () => {
 
   const handleTouch = (e, id = undefined) => {
     e.preventDefault();
-    const element = document.querySelector('#chat').firstChild;
-
+    const element = document.querySelector('#chat');
+    console.log(element);
     document.querySelector('#chat').style.transition = 'none 0s';
     // document.querySelector(`#${id}`)?.style.transition = 'none 0s';
-
+    let initialClickY =
+      document.getElementById('intro').clientHeight - e.touches[0].clientY;
+    let initialElementBottom = document
+      .getElementById('chat')
+      .getBoundingClientRect().bottom;
     const startX = position.x;
     const startY = position.y;
     element?.addEventListener(
@@ -154,12 +165,14 @@ const Chat = () => {
       document.body.style.overflow = 'hidden';
 
       // Calculate the new position of the element.
+      const deltaY = event.touches[0].clientY - initialClickY;
+      const newBottom = initialElementBottom - deltaY;
       const newX = startX + event.touches[0].clientX - startX;
-      const newY = startY + event.touches[0].clientY - startY;
+      // const newY = startY + event.touches[0].clientY - startY;
       element.style.transition = 'none';
 
       // Set the new position of the element.
-      setPosition({ x: newX, y: newY });
+      setPosition({ x: newX, y: newBottom });
     }
 
     // Function to stop moving the element.
@@ -578,9 +591,9 @@ const Chat = () => {
           style={{
             position: 'fixed',
             left: position.x,
-            top: position.y,
+            bottom: position.y,
           }}
-          className={`w-40  transition-all duration-1000 ${
+          className={`w-40   ${
             openChat &&
             document.querySelector('#chat')?.getBoundingClientRect().top >= 300
               ? 'mt-[-15rem]'

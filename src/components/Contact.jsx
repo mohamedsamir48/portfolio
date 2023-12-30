@@ -48,13 +48,19 @@ const ContactForm = styled.form`
 const Input = styled.input`
   border: 1px solid gray;
   font-size: 16px;
+  width: 300px;
+  @media screen and (max-width: 500px) {
+    width: 170px;
+  }
 `;
 
 const InputText = styled.textarea`
   max-height: 100px;
   font-size: 16px;
-  width: 95%;
-
+  width: 300px;
+  @media screen and (max-width: 500px) {
+    width: 170px;
+  }
   border: 1px solid gray;
 `;
 const Button = styled.button`
