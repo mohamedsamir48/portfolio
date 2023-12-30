@@ -92,7 +92,7 @@ const Contact = forwardRef((props, ref) => {
   };
   return (
     <Container ref={ref}>
-      <Title>Contact me</Title>
+      <Title>Send Email</Title>
       <ContactWrapper>
         <ContactForm onSubmit={(e) => sendEmail(e)}>
           <Input placeholder='name' name='name' />

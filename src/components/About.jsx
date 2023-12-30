@@ -54,14 +54,14 @@ const About = forwardRef((props, aboutRef) => {
       <Wrapper>
         <Title>About me</Title>
         <Desc>
-          <Image src={'/img/mohamed-nobackground.png'} />I am Mohamed Samir,
-          live in Egypt, 10th of ramdan, I have some skills in blender I am
-          still learning. anyway...!!, I'm glad you visited my website, At the
-          beginning of the journey. I can learn anything to be adapted to job
-          market, of course I am helpfull, good team player. &#128521; every
-          problem must be solved, whatever...!!, you should be carful when chat
-          me in this website. don't send sensitive data, I prefer sending email
-          in,{' '}
+          <Image src={require('../assets/mohamed-nobackground.png')} />I am
+          Mohamed Samir, live in Egypt, 10th of ramdan, I have some skills in
+          blender I am still learning. anyway...!!, I'm glad you visited my
+          website, At the beginning of the journey. I can learn anything to be
+          adapted to job market, of course I am helpfull, good team player.
+          &#128521; every problem must be solved, whatever...!!, you should be
+          carful when chat me in this website. don't send sensitive data, I
+          prefer sending email in,{' '}
           <Buttun
             onClick={() => {
               props.contactRef.current.scrollIntoView();

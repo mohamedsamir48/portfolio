@@ -67,11 +67,12 @@ const fadeRight = keyframes`
 }
 `;
 const ProjectImage = styled.img`
-  width: 90vw;
+  width: 80vw;
+  max-height: 80vh;
   min-width: 90vw;
-  animation: 1s ${fadeRight} ease-out;
-  display: ${(props) => (props.index == props.imageIndex ? 'flex' : 'none')};
-  margin-top: 60px;
+  /* animation: 1s ${fadeRight} ease-out; */
+  display: ${(props) => (props.index === props.imageIndex ? 'flex' : 'none')};
+  margin-top: 50px;
   /* margin-left: 50px; */
   @media screen and(max-width:600px) {
     margin-left: 0;
@@ -165,17 +166,14 @@ const Projects = forwardRef((props, ref) => {
             />
           ) : null}
           {projectIndex !== -1
-            ? projects[projectIndex].images.map((img, index) => {
+            ? projects[projectIndex].images.map((img, index) => (
                 <ProjectImage
-                  key={img}
+                  key={index}
                   index={index}
                   imageIndex={imageIndex}
-                  src={require(`../assets/projects/` +
-                    `${projects[projectIndex].folderName}` +
-                    '/' +
-                    `${img}`)}
-                />;
-              })
+                  src={require(`../assets/projects/${projects[projectIndex].folderName}/${img}`)}
+                />
+              ))
             : null}
         </Slider>
       </ProjectShow>

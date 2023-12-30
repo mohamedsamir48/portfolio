@@ -62,7 +62,7 @@ const Button = styled.button`
   font-weight: 900;
 
   background: none;
-  margin-top: 50px;
+  margin-top: 20px;
   color: inherit;
   z-index: 100;
   font-size: 24px;

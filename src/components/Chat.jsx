@@ -142,11 +142,17 @@ const Chat = () => {
 
     const startX = position.x;
     const startY = position.y;
-    element?.addEventListener('touchmove', moveElement);
+    element?.addEventListener(
+      'touchmove',
+
+      moveElement
+    );
 
     element?.addEventListener('touchend', stopMovingElement);
 
     function moveElement(event) {
+      document.body.style.overflow = 'hidden';
+
       // Calculate the new position of the element.
       const newX = startX + event.touches[0].clientX - startX;
       const newY = startY + event.touches[0].clientY - startY;
@@ -158,6 +164,8 @@ const Chat = () => {
 
     // Function to stop moving the element.
     function stopMovingElement() {
+      document.body.style.overflow = 'auto';
+
       // Remove the event listeners.
       element.style.transition = 'all';
 
