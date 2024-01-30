@@ -193,7 +193,7 @@ const Navbar = ({ aboutRef, skillsRef, contactRef, projectsRef, HomeRef }) => {
                   projectsRef.current.scrollIntoView();
                 }}
               >
-                Project
+                Projects
               </Link>
             </Item>
           </Menu>

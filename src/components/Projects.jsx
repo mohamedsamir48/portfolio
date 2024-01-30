@@ -73,6 +73,7 @@ const ProjectImage = styled.img`
   /* animation: 1s ${fadeRight} ease-out; */
   display: ${(props) => (props.index === props.imageIndex ? 'flex' : 'none')};
   margin-top: 50px;
+  z-index: 1000;
   /* margin-left: 50px; */
   @media screen and(max-width:600px) {
     margin-left: 0;
