@@ -29,7 +29,7 @@ const ContactWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 3px 5px gray;
+  /* box-shadow: 0px 3px 5px gray; */
   height: 350px;
   min-width: 200px;
   width: 400px;
