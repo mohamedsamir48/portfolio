@@ -47,6 +47,8 @@ const ProjectShow = styled.div`
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 999;
+
   background-color: rgb(16, 16, 16);
   overflow: hidden;
 `;
@@ -161,7 +163,6 @@ const Projects = forwardRef((props, ref) => {
               style={{
                 position: 'absolute',
                 zIndex: '1001',
-
                 color: ' #3e065f',
                 right: '50px',
                 top: '50vh',

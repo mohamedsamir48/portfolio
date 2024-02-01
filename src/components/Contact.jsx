@@ -4,6 +4,7 @@ import emailjs from 'emailjs-com';
 
 const Container = styled.div`
   display: flex;
+  z-index: 1;
   /* background: linear-gradient(to bottom, white 0, #3e065f 100%); */
   background: radial-gradient(circle at center, white 0, white 100%);
   flex-direction: column;
