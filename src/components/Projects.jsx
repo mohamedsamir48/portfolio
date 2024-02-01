@@ -128,6 +128,7 @@ const Projects = forwardRef((props, ref) => {
             <FaTimes
               style={{
                 position: 'absolute',
+                zIndex: '1001',
                 top: '60px',
                 right: '20px',
                 color: ' #3e065f',
@@ -144,6 +145,8 @@ const Projects = forwardRef((props, ref) => {
             <AiFillCaretLeft
               style={{
                 position: 'absolute',
+                zIndex: '1001',
+
                 color: ' #3e0670',
                 left: '50px',
                 top: '50vh',
@@ -157,6 +160,8 @@ const Projects = forwardRef((props, ref) => {
             <AiFillCaretRight
               style={{
                 position: 'absolute',
+                zIndex: '1001',
+
                 color: ' #3e065f',
                 right: '50px',
                 top: '50vh',
