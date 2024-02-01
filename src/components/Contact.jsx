@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
 import styled from 'styled-components';
 import emailjs from 'emailjs-com';
 
@@ -10,6 +10,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background: #f7e7e6;
+  position: relative;
 
   padding: 10px 20px;
 `;
@@ -80,6 +81,11 @@ const Button = styled.button`
   }
 `;
 const Contact = forwardRef((props, ref) => {
+  const name = useRef(null);
+  const email = useRef(null);
+  const subject = useRef(null);
+  const message = useRef(null);
+  const [sentMessage, setSentMessage] = useState(false);
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
@@ -92,6 +98,14 @@ const Contact = forwardRef((props, ref) => {
       .then(
         (result) => {
           console.log(result.text);
+          name.current.value = '';
+          email.current.value = '';
+          subject.current.value = '';
+          message.current.value = '';
+          setSentMessage(true);
+          setTimeout(() => {
+            setSentMessage(false);
+          }, 3000);
         },
         (error) => console.log(error.text)
       );
@@ -101,13 +115,22 @@ const Contact = forwardRef((props, ref) => {
       <Title>Send Email</Title>
       <ContactWrapper>
         <ContactForm onSubmit={(e) => sendEmail(e)}>
-          <Input placeholder='name' name='name' />
-          <Input placeholder='email' name='email' />
-          <Input placeholder='subject' name='subject' />
-          <InputText placeholder='Message' name='message' />
+          <Input ref={name} placeholder='name' name='name' />
+          <Input ref={email} placeholder='email' name='email' />
+          <Input ref={subject} placeholder='subject' name='subject' />
+          <InputText ref={message} placeholder='Message' name='message' />
           <Button>send</Button>
         </ContactForm>
       </ContactWrapper>
+      <div
+        className={`transition-all duration-[3000ms] ${
+          sentMessage ? 'opacity-100' : 'opacity-0'
+        } fixed top-[48%] left-[0] flex w-full justify-center`}
+      >
+        <h1 className='p-4 bg-black text-white'>
+          Message has been Sent, I will reply as soon as I can
+        </h1>
+      </div>
     </Container>
   );
 });
